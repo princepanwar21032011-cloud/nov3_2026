@@ -37,5 +37,6 @@ jobs:
           key: ${{ secrets.PROD_SSH_KEY }}
           script: |
             set -e
-          docker container rm -f prodcont && docker run --name prodcont -dit -p 9091:80 perincepanwar21032011myimage_nov_3:t${{ github.run_number }}
+            docker container rm -f prodcont
+            docker run --name prodcont -dit -p 9091:80 princepanwar21032011myimage_nov_3:t${{ github.run_number }}
 
