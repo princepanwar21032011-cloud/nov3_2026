@@ -22,3 +22,8 @@ jobs:
         run: docker build -t princepanwar21032011/myimage_nov_3:t${{ github.run_number }} -f Dockerfile .
       - name: mystep5-check the docker image
         run: docker image ls
+      - name: mystep6-login to docker hub
+        uses: docker/login-action@v3
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PAT }}
