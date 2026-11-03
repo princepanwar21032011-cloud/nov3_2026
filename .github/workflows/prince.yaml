@@ -1,0 +1,9 @@
+name: myworkflow1
+on:
+  push:
+    branches:
+      - princebranch
+  workflow_dispatch:
+jobs:
+  myjob1:
+    runs-on: ubuntu-latest
