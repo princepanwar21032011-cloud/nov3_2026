@@ -7,3 +7,14 @@ on:
 jobs:
   myjob1:
     runs-on: ubuntu-latest
+    steps:
+      - name: mystep1
+        run: |
+          whoami
+          pwd
+          cd
+          ls -al
+      - name: mystep2-clone the repo
+        uses: actions/checkout@v4
+      - name: mystep3-check the source code
+        run: ls -al
