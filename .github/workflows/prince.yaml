@@ -27,3 +27,15 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_PAT }}
+      - name: mystep7-push image to docker hub
+        run: docker push princepanwar21032011/myimage_nov_3:t${{ github.run_number }}
+      - name: mystep8-login to prod server using action
+        uses: appleboy/ssh-action@v1
+        with:
+          host: ${{ secrets.PROD_HOST }}
+          username: ${{ secrets.PROD_USER }}
+          key: ${{ secrets.PROD_SSH_KEY }}
+          script: |
+            set -e
+          docker container rm -f prodcont && docker run --name prodcont -dit -p 9091:80 perincepanwar21032011myimage_nov_3:t${{ github.run_number }}
+
